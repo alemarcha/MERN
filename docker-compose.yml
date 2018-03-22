@@ -20,21 +20,7 @@ services:
       - ./server:/app
       - /app/node_modules
     ports:
-      - "3000:3000"
-    command: "npm start"
-    links:
-      - mongodb
-  mongodb:
-    image: mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - ~/data/mongodb_data/:/data/db
-  mongo-seed:
-    build: 
-      context: .
-      dockerfile: DockerfileMongo
-    links:
-      - mongodb
+      - "3001:3001"
+    command: "npm run dev"
 
       

@@ -1,5 +1,4 @@
 const express = require("express");
-const AuthenticationController = require("../controllers/authenticationController");
 
 module.exports.init = function(apiRoutes, requireAuth) {
   const authRoutes = express.Router();

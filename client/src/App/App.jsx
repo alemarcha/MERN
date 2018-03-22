@@ -20,6 +20,8 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {}
+
   render() {
     const { alert } = this.props;
     return (

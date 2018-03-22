@@ -12,7 +12,7 @@ function login(username, password) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email: username, password })
   };
-  return fetch(appConstants.API_HOST + "/auth/login", requestOptions)
+  return fetch(appConstants.API_HOST_UMS + "/users/login", requestOptions)
     .then(response => {
       if (!response.ok) {
         return Promise.reject(response.statusText);
@@ -20,20 +20,22 @@ function login(username, password) {
 
       return response.json();
     })
-    .then(user => {
+    .then(response => {
       // login successful if there's a jwt token in the response
-      if (user && user.token) {
+      if (response && response.ok && response.data && response.data.token) {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", JSON.stringify(response.data.token));
+        localStorage.setItem("user", JSON.stringify(response.data.user));
       }
 
-      return user;
+      return response.data.user;
     });
 }
 
 function logout() {
   // remove user from local storage to log user out
   localStorage.removeItem("user");
+  localStorage.removeItem("token");
 }
 
 function getAll() {

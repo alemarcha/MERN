@@ -6,7 +6,6 @@ const authRouter = require("./router/authRouter");
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate("jwt", { session: false });
-const requireLogin = passport.authenticate("local", { session: false });
 
 // Constants for role types
 const REQUIRE_ADMIN = "Admin",
@@ -18,7 +17,7 @@ module.exports = function(app) {
   // Initializing route groups
 
   const apiRoutes = express.Router();
-  authRouter.init(apiRoutes, requireAuth, requireLogin);
+  authRouter.init(apiRoutes, requireAuth);
   //=========================
   // Auth Routes
   //=========================

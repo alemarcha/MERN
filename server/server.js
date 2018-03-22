@@ -4,22 +4,35 @@ const express = require("express"),
   mongoose = require("mongoose"),
   config = require("./config/main");
 
+global.__basedir = __dirname + "/";
 const router = require("./router");
 const app = express();
+app.use(require("express-status-monitor")());
 
 // Init swagger
 require("./config/swagger").swagger_init(app, express);
 console.log("Swagger Init");
 
 // Database Connection
-mongoose.connect(config.database);
+mongoose.connect(config.database, function(err, database) {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+});
 
 // Start the server
 const server = app.listen(config.port);
-console.log("Your server is running on port " + config.port + ".");
+console.log(
+  "Your server is running on port " +
+    config.port +
+    ". Environment " +
+    config.environment
+);
 
 // Setting up basic middleware for all Express requests
-app.use(logger("dev")); // Log requests to API using morgan
+// Log requests to API using morgan
+app.use(logger("dev")); 
 
 // Parse urlencoded bodies to JSON
 app.use(bodyParser.urlencoded({ extended: false }));

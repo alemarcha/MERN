@@ -3,9 +3,11 @@ module.exports.swagger_init = function(app, express) {
   const YAML = require("yamljs");
   const swaggerUi = require("swagger-ui-express");
   const swaggerModelValidator = require("swagger-model-validator");
+  const config = require("./main");
 
   const routerSwagger = express.Router();
   const options = YAML.load("./data/swagger/doc.yaml");
+  options.host = config.host_swagger + ":" + 8083;
   // const swaggerDoc = swaggerJSDoc(options)
   // swaggerModelValidator(swaggerDoc)
 

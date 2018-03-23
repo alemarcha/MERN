@@ -45,7 +45,7 @@ let loadVariableDevEnvironment = environmentVariables => {
   // Database connection information
   environmentVariables.database = process.env.DB_DEV;
   // Setting port for server
-  environmentVariables.port = process.env.PORT_DEV || 3000;
+  environmentVariables.port = 3000;
 
   return environmentVariables;
 };
@@ -54,7 +54,7 @@ let loadVariableProductionEnvironment = environmentVariables => {
   // Database connection information
   environmentVariables.database = process.env.DB;
   // Setting port for server
-  environmentVariables.port = process.env.PORT || 3000;
+  environmentVariables.port =  3000;
 
   return environmentVariables;
 };

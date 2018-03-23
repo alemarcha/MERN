@@ -10,17 +10,27 @@ services:
     ports:
       - "8081:8081"
     command: "npm start"
-    links:
-      - server
-  server:
+    depends_on:
+      - server_1
+  server_1:
     build:
       context: .
       dockerfile: DockerfileServer
     volumes:
       - ./server:/app
       - /app/node_modules
+    restart: always
     ports:
-      - "3001:3001"
+      - "3000"
     command: "npm run dev"
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: always
+    ports:
+      - 8083:80
+    depends_on:
+      - server_1
 
       

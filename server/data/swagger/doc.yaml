@@ -39,11 +39,21 @@ paths:
       responses:
          200:
            description: "login"
-  /prueba:
+  /files/list:
     get:
-      description: "Login to the application"
+      description: "List files"
+      tags:
+      - "files"
+      produces:
+      - "application/json"
+      responses:
+         200:
+           description: "List files"
+  /ping:
+    get:
+      description: "Ping Api Rest"
       produces:
       - application/json
       responses:
-        200:
-          description: probandoooo
+        '200':
+          description: Ping response

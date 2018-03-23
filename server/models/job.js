@@ -39,3 +39,5 @@ JobSchema.pre("save", function(next) {
   console.log("Saving job");
   next();
 });
+
+module.exports = mongoose.model("Job", JobSchema);

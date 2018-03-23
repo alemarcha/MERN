@@ -32,7 +32,7 @@ console.log(
 
 // Setting up basic middleware for all Express requests
 // Log requests to API using morgan
-app.use(logger("dev")); 
+app.use(logger("dev"));
 
 // Parse urlencoded bodies to JSON
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -57,3 +57,4 @@ app.use(function(req, res, next) {
 });
 
 router(app);
+module.exports = app;

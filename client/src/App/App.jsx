@@ -8,8 +8,8 @@ import { PrivateRoute } from "../_components";
 import { HomePage } from "../HomePage";
 import { LoginPage } from "../LoginPage";
 import { NotFoundPage } from "../NotFoundPage";
-import { HelloLib } from "hellolib";
-import { ByeLib } from "hellolib";
+import { HelloLib } from "hellolibalemarcha";
+import { ByeLib } from "hellolibalemarcha";
 
 class App extends React.Component {
   constructor(props) {

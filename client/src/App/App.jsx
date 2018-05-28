@@ -8,6 +8,8 @@ import { PrivateRoute } from "../_components";
 import { HomePage } from "../HomePage";
 import { LoginPage } from "../LoginPage";
 import { NotFoundPage } from "../NotFoundPage";
+import { HelloLib } from "hellolib";
+import { ByeLib } from "hellolib";
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +29,8 @@ class App extends React.Component {
     return (
       <div className="jumbotron">
         HEADER
+        <HelloLib />
+        <ByeLib />
         <div className="container">
           <div className="col-sm-8 col-sm-offset-2">
             {alert.message && (

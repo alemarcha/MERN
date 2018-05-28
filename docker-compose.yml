@@ -1,18 +1,18 @@
 version: "3"
 services:
 # this is commented because of hellolib is not npm package yet
-  # web:
-  #   build:
-  #     context: .
-  #     dockerfile: DockerfileClient
-  #   volumes:
-  #     - ./client:/app
-  #     - /app/node_modules
-  #   ports:
-  #     - "8081:8081"
-  #   command: "npm run build"
-  #   depends_on:
-  #     - server_1
+  web:
+    build:
+      context: .
+      dockerfile: DockerfileClient
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    ports:
+      - "8081:8081"
+    command: "npm start"
+    depends_on:
+      - server_1
   server_1:
     build:
       context: .

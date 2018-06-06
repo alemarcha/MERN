@@ -41,6 +41,8 @@ class App extends React.Component {
                 <Switch>
                   <PrivateRoute exact path="/" component={HomePage} />
                   <Route path="/login" component={LoginPage} />
+                  <Route path="/hello" component={HelloLib} />
+                  <Route path="/bye" component={ByeLib} />
                   <Route component={NotFoundPage} />
                 </Switch>
               </div>

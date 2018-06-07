@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { AlertLib } from "hellolibalemarcha";
 
 import { userActions } from "../_actions";
 
@@ -24,7 +25,7 @@ class HomePage extends React.Component {
         <h1>
           Hi {user.firstName} {user.lastName}!
         </h1>
-        <p>You're logged in with React & JWT!!</p>
+        <AlertLib message="You're logged in with React & JWT!!"></AlertLib>
         <h3>Users from secure api end point:</h3>
         {users.loading && <em>Loading users...</em>}
         {users.error && (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, Provider  } from "react-redux";
 
 import { history } from "../_helpers";
 import { alertActions } from "../_actions";
@@ -27,39 +27,27 @@ class App extends React.Component {
   render() {
     const { alert } = this.props;
     return (
-      <div className="jumbotron">
-        HEADER
-        <HelloLib />
-        <ByeLib />
-        <div className="container">
-          <div className="row justify-content-md-center">
-              <div className="col-8">
-                {alert.message && (
-                  <div className={`alert ${alert.type}`}>{alert.message}</div>
-                )}
-                <Router history={history}>
-                  <div>
-                    <Switch>
-                      <PrivateRoute exact path="/" component={HomePage} />
-                      <Route path="/login" component={LoginPage} />
-                      <Route path="/hello" component={HelloLib} />
-                      <Route path="/bye" component={ByeLib} />
-                      <Route component={NotFoundPage} />
-                    </Switch>
-                  </div>
-                </Router>
-              </div>
+      <div className="container-fluid">
+        <HelloLib history={history}/>
+        <div className="row justify-content-md-center">
+          <div className="col-8">
+              {alert.message && (
+                <div className={`alert ${alert.type}`}>{alert.message}</div>
+              )}
+              <Router history={history}>
+                <div>
+                  <Switch>
+                    <PrivateRoute exact path="/" component={HomePage} />
+                    <Route path="/login" component={LoginPage} />
+                    <Route path="/hello" component={HelloLib} />
+                    <Route path="/bye" component={ByeLib} />
+                    <Route component={NotFoundPage} />
+                  </Switch>
+                </div>
+              </Router>
           </div>
         </div>
-        FOOTER
-        <div className="text-center">
-          <p>
-            <a href="https://github.com/alemarcha/MERN" target="_top">
-              MERN
-            </a>
-          </p>
-          <p>2018</p>
-        </div>
+        <ByeLib />
       </div>
     );
   }

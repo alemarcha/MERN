@@ -20,7 +20,7 @@ class HomePage extends React.Component {
   render() {
     const { user, users } = this.props;
     return (
-      <div className="col-md-6 col-md-offset-3">
+      <div className="col-md-6 offset-md-3">
         <h1>
           Hi {user.firstName} {user.lastName}!
         </h1>

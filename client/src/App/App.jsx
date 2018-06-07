@@ -32,21 +32,23 @@ class App extends React.Component {
         <HelloLib />
         <ByeLib />
         <div className="container">
-          <div className="col-sm-8 col-sm-offset-2">
-            {alert.message && (
-              <div className={`alert ${alert.type}`}>{alert.message}</div>
-            )}
-            <Router history={history}>
-              <div>
-                <Switch>
-                  <PrivateRoute exact path="/" component={HomePage} />
-                  <Route path="/login" component={LoginPage} />
-                  <Route path="/hello" component={HelloLib} />
-                  <Route path="/bye" component={ByeLib} />
-                  <Route component={NotFoundPage} />
-                </Switch>
+          <div className="row justify-content-md-center">
+              <div className="col-8">
+                {alert.message && (
+                  <div className={`alert ${alert.type}`}>{alert.message}</div>
+                )}
+                <Router history={history}>
+                  <div>
+                    <Switch>
+                      <PrivateRoute exact path="/" component={HomePage} />
+                      <Route path="/login" component={LoginPage} />
+                      <Route path="/hello" component={HelloLib} />
+                      <Route path="/bye" component={ByeLib} />
+                      <Route component={NotFoundPage} />
+                    </Switch>
+                  </div>
+                </Router>
               </div>
-            </Router>
           </div>
         </div>
         FOOTER
